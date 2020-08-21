@@ -4,6 +4,7 @@ window.document.addEventListener('readystatechange', function (e) {
   var { target: doc } = e;
   var formAddTask = $('#add-task');
   var allTasks = $('.all-tasks');
+  var footerContent = $('.footer-content');
   var tasksDuration = [];
   var tasksDispatchButton = [];
   var today = new Date();
@@ -81,8 +82,10 @@ window.document.addEventListener('readystatechange', function (e) {
         )
         .join('');
       allTasks.style.display = 'block';
+      footerContent.classList.add('animate');
       allTasks.innerHTML = render;
       tasksDuration = $$('.app-input-duration');
+
       tasksDispatchButton = $$('.task-button-dispatch');
     }
   }

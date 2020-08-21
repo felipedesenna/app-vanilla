@@ -7,11 +7,11 @@
     <title>Task Counter</title>
 </head>
 <body>
-    <main class="container">
+    <main class="container animate-container">
         <section class="container-header">
-            <h1>Tarefas</h1>
+            <h1                      class="animate-title">iTask</h1>
         </section>
-        <section class="container-body">
+        <section class="container-body animate-container-body">
             <form class="task-form"id="add-task" novalidate>
                 <input name="newTask" class="app-input" type="text" />
                 <button class="app-button" type="submit">add</button>
@@ -20,9 +20,9 @@
             <div class="all-tasks"></div>
         </section>
         <section class="container-footer">
-            <div>
-                <p>Total trabalhado</p>
-                <input name="total" class="app-total" type="text" value="23:55" />
+            <div class="footer-content">
+                <p>Total trabalhado : </p>
+                <input name="total" class="app-total" type="text" value="23:55" disabled/>
                 <button class="app-calc" type="submit">calcular</button>
             </div>
         </section>
