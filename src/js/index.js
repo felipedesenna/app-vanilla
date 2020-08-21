@@ -14,6 +14,8 @@ window.document.addEventListener('readystatechange', function (e) {
 
   var _tasks = [];
 
+  var intervalEvents = [];
+
   formAddTask.addEventListener('submit', InsertTask);
 
   //events
@@ -35,8 +37,48 @@ window.document.addEventListener('readystatechange', function (e) {
     return function (evt) {
       const { checked } = evt.target;
       console.log(i, checked);
+      var { id, name, duration } = _tasks[i];
+
+      if (!checked) {
+        clearInterval(intervalEvents[i]);
+        return;
+      }
+
+      intervalEvents[i] = setInterval(() => {
+        var elem = document.getElementById(`taskDur-${id}`);
+        var [hh, mm, ss] = elem.value.split(':');
+
+        document.getElementById(`taskDur-${id}`).value = timer(
+          Number(hh),
+          Number(mm),
+          Number(ss)
+        );
+      }, 100);
     };
   }
+
+  var timer = (hh = 0, mm = 0, ss = 0) => {
+    ss = ss + 1;
+
+    if (ss === 59) {
+      ss = 0;
+      mm = mm + 1;
+
+      if (mm === 59) {
+        mm = 0;
+        hh = hh + 1;
+      }
+    }
+
+    let format =
+      (hh < 10 ? '0' + hh : hh) +
+      ':' +
+      (mm < 10 ? '0' + mm : mm) +
+      ':' +
+      (ss < 10 ? '0' + ss : ss);
+
+    return format;
+  };
 
   // utils
 
