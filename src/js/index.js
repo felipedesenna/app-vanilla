@@ -4,6 +4,7 @@ window.document.addEventListener('readystatechange', function (e) {
   var { target: doc } = e;
   var formAddTask = $('#add-task');
   var allTasks = $('.all-tasks');
+  var total = $('.app-calc');
   var footerContent = $('.footer-content');
   var tasksDuration = [];
   var tasksDispatchButton = [];
@@ -17,6 +18,7 @@ window.document.addEventListener('readystatechange', function (e) {
   var intervalEvents = [];
 
   formAddTask.addEventListener('submit', InsertTask);
+  total.addEventListener('click', calcTotal);
 
   //events
 
@@ -108,7 +110,7 @@ window.document.addEventListener('readystatechange', function (e) {
                 <input class="app-input" type="text" value="${
                   item.name
                 }" id="task-${item.id}" disabled/>
-                <input class="app-input" type="text" value="${timeStampConvert(
+                <input class="app-input-time" type="text" value="${timeStampConvert(
                   item.duration
                 )}" id="taskDur-${item.id}"  disabled/>
             </div>
@@ -130,6 +132,44 @@ window.document.addEventListener('readystatechange', function (e) {
 
       tasksDispatchButton = $$('.task-button-dispatch');
     }
+  }
+
+  function timeValue(time) {
+    var item = time.split(":");
+    
+    return (item[0] * 3600) +
+           (item[1] * 60) +
+           (+item[2]);
+  }
+  
+  function padHour(num) {
+    if(num < 10) {
+      return "0" + num;
+    } else {
+      return "" + num;
+    }
+  }
+  
+  function formatTime(seconds) {
+    return [padHour(Math.floor(seconds/3600)),
+            padHour(Math.floor(seconds/60)%60),
+            padHour(seconds%60),
+            ].join(":");
+  }
+
+  function calcTotal(evt) {
+    var totalTime = [].map.call(
+      document.getElementsByClassName('app-input-time'),
+      function (currentValue, index, collection) {
+        return currentValue.value;
+      }
+    );
+
+    var sumTime = totalTime.reduce((acc, value) => {
+      return formatTime(timeValue(acc) + timeValue(value));
+    });
+
+    $('.app-total').value = sumTime;
   }
 
   function InitFields() {
