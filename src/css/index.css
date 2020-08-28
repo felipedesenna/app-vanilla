@@ -129,7 +129,12 @@ button {
   cursor: pointer;
 }
 
-.app-input, .app-input-time {
+.app-button:disabled {
+  opacity: 0.3;
+}
+
+.app-input,
+.app-input-time {
   padding: 2rem 2.4rem;
   font-size: 2.4rem;
   font-weight: 500;
@@ -138,6 +143,20 @@ button {
   background: var(--grey_6);
 }
 
+.app-alert {
+  background: var(--gold_3);
+  color: var(--grey_1);
+  padding: 24px 32px;
+  border-radius: 100px;
+  position: absolute;
+  top: -64px;
+  opacity: 0;
+  transition: all 500ms cubic-bezier(0.453, 0.53, 0.768, 0.1);
+}
+.app-alert.show {
+  top: 16px;
+  opacity: 1;
+}
 /* App styles */
 
 .container {
@@ -237,6 +256,11 @@ button {
 .footer-content > button {
   padding: 0 4px;
   text-align: center;
+  transform: translateX(100vw);
+  transition: all 1s cubic-bezier(0.453, 0.53, 0.768, 0.1);
+}
+
+.footer-content > .app-calc:disabled {
   transform: translateX(100vw);
   transition: all 1s cubic-bezier(0.453, 0.53, 0.768, 0.1);
 }
@@ -406,4 +430,3 @@ button {
     transform: translateY(0) rotate(0deg);
   }
 }
- 

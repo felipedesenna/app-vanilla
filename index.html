@@ -13,7 +13,7 @@
         </section>
         <section class="container-body animate-container-body">
             <form class="task-form"id="add-task" novalidate>
-                <input name="newTask" class="app-input" type="text" />
+                <input name="newTask" class="app-input" type="text" placeholder="Insira uma nova tarefa..." />
                 <button class="app-button" type="submit">add</button>
             </form>
 
@@ -22,11 +22,12 @@
         <section class="container-footer">
             <div class="footer-content">
                 <p>Total trabalhado : </p>
-                <input name="total" class="app-total" type="text" value="23:55" disabled/>
+                <input name="total" class="app-total" type="text" value="00:00:00" disabled/>
                 <button class="app-calc" type="submit">calcular</button>
             </div>
         </section>
     </main>
+    <div class="app-alert">Tarefa já existe</div>
     <script type="text/javascript" src="./src/js/index.js"></script>
 </body>
 </html>
