@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/css/index.css" />
+    <title>Task Counter</title>
+</head>
+<body>
+    <main class="container animate-container">
+        <section class="container-header">
+            <h1                      class="animate-title">iTask</h1>
+        </section>
+        <section class="container-body animate-container-body">
+            <form class="task-form"id="add-task" novalidate>
+                <input name="newTask" class="app-input" type="text" placeholder="Insira uma nova tarefa..." />
+                <button class="app-button" type="submit">add</button>
+            </form>
+
+            <div class="all-tasks"></div>
+        </section>
+        <section class="container-footer">
+            <div class="footer-content">
+                <p>Total trabalhado : </p>
+                <input name="total" class="app-total" type="text" value="00:00:00" disabled/>
+                <button class="app-calc" type="submit">calcular</button>
+            </div>
+        </section>
+    </main>
+    <div class="app-alert">Tarefa já existe</div>
+    <script type="text/javascript" src="./src/js/index.js"></script>
+</body>
+</html>
